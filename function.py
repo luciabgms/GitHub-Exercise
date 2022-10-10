@@ -2,21 +2,21 @@ import numpy as np
 
 def Rs(i,e,w):
     """
-    Calculates the mean radius under the satellite, Rs
+    Calculates the mean radius under the satellite, Rs [deg]
 
     Parameters
     ----------
     i : float
-        inclination of the orbit
+        inclination of the orbit [deg]
     e : float
         excentricity of the orbit
     w : float
-        argument of the perigee of the orbit
+        argument of the perigee of the orbit [deg]
 
     Returns
     -------
     Rs : float
-        mean radius under the satellite
+        mean radius under the satellite [deg]
     """
 
     coef_matrix = np.matrix(
@@ -85,4 +85,4 @@ def Rs(i,e,w):
         row_rs = coef_matrix[j,3]*i**coef_matrix[j,0]*e**coef_matrix[j,1]*w**coef_matrix[j,2]
         Rs += row_rs 
 
-    return Rs
+    return Rs/1000
