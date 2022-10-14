@@ -126,5 +126,5 @@ def MeanMotion(a):
 
     T_day = 86400 # solar day [s]
     mu = 3.986E5 # standard gravitational parameter of Earth [km^3/s^2]
-    MM = T_day/(2*np.pi)*np.sqrt(mu/a^3)
+    MM = T_day/(2*np.pi)*np.sqrt(mu/a**3)
     return MM
