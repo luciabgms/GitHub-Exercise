@@ -83,6 +83,48 @@ def Rs(i,e,w):
     Rs = 0
     for j in range(rows):
         row_rs = coef_matrix[j,3]*i**coef_matrix[j,0]*e**coef_matrix[j,1]*w**coef_matrix[j,2]
-        Rs += row_rs 
+        Rs += row_rs
 
     return Rs/1000
+
+def semimayor_axis(Ap, e, Rs):
+    """
+    Calculates the semimayor axis of an orbit, a [km]
+
+    Parameters
+    ----------
+    Ap : float
+        Altitud of the apogee [km]
+    e : float
+        eccentricity of the orbit [-]
+    Rs : float
+        mean radius under the satellite [km]
+
+    Returns
+    -------
+    a : float
+        semi-major axis of the orbit [km]
+    """
+
+    a = (Ap + Rs)/(1-e)
+    return a
+
+def MeanMotion(a):
+    """
+    Calculates the mean motion of a satellite, MM [rev/day]
+
+    Parameters
+    ----------
+    a : float
+        semi-major axis of the orbit [km]
+
+    Returns
+    -------
+    MM : float
+        mean motion of the satellite [rev/day]
+    """
+
+    T_day = 86400 # solar day [s]
+    mu = 3.986E5 # standard gravitational parameter of Earth [km^3/s^2]
+    MM = T_day/(2*np.pi)*np.sqrt(mu/a**3)
+    return MM
